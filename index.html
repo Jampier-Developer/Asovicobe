@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asovicobe - Vigilancia - Willintong</title>
+    <link rel="shortcut icon" href="img/Asovicobe-Logo1.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/Asovicobe.css">
+</head>
+<body>
+
+
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="img/Asovicobe-Logo1.png" alt="Logo Asovicobe" class="logo">
+            <h1>Asovicobe Vigilancia</h1>
+        </div>
+    </header>
+
+
+
+
+    <main class="container">
+        <section class="data-section">
+            <h2><i class="fas fa-calendar-day"></i> Registro de Turnos</h2>
+            
+            <div class="input-group">
+                <label for="day"><i class="fas fa-calendar-alt"></i> Día:</label>
+                <input type="text" id="day" placeholder="#">
+            </div>
+
+            <div class="input-group">
+                <label for="date"><i class="far fa-calendar"></i> Fecha:</label>
+                <input type="text" id="date" placeholder="#">
+            </div>
+
+            <div class="input-group">
+                <label for="time"><i class="far fa-clock"></i> Horario:</label>
+                <input type="text" id="time" placeholder="#">
+            </div>
+
+            <button id="saveBtn" class="btn btn-save">
+                <i class="fas fa-save"></i> Guardar
+            </button>
+        </section>
+
+
+
+        <section class="list-section">
+            <h2><i class="fas fa-list"></i> Turnos Registrados</h2>
+            <ul id="dataList"></ul>
+        </section>
+    </main>
+
+
+
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; 2025 Asovicobe Vigilancia. Todos los derechos reservados.</p>
+        <p>Desarrollado por <a href="" target="_blank">Jampier Estrada</a></p>
+    </footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script src="js/Asovicobe.js"></script>
+</body>
+</html>
