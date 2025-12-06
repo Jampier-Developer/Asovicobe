@@ -45,7 +45,7 @@ function formatearDia(dia) {
            { 
             
             day: formatearDia("SABADO"),
-            date: "8 De Noviembre 2025", 
+            date: "6 De Diciembre 2025", 
             time: "11AM a 9PM", 
             completed: true,
             isJampier: true  // Identificador
@@ -63,7 +63,7 @@ function formatearDia(dia) {
 
 { 
     day: formatearDia("DOMINGO"), 
-    date: "2 De Noviembre 2025", 
+    date: "7 De Diciembre 2025", 
     time: "7AM a 9PM", 
     completed: true,
     isJampier: true
@@ -78,7 +78,7 @@ function formatearDia(dia) {
           { 
             
             day: formatearDia("LUNES - FESTIVO"), 
-            date: "3 De Noviembre 2025", 
+            date: "8 De Diciembre 2025",  
             time: "7AM a 9PM", 
             completed: true,
             isJampier: true  // Identificador
