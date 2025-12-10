@@ -88,7 +88,17 @@ function formatearDia(dia) {
 
 
     
-        
+         
+          { 
+            
+            day: formatearDia("MIERCOLES"), 
+            date: "10 De Diciembre 2025",  
+            time: "5PM a 12AM", 
+            completed: true,
+            isJampier: true  // Identificador
+            
+        },
+
         
   
 
