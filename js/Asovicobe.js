@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 function formatearDia(dia) {
-    const diasRojos = ["DOMINGO", "LUNES - FESTIVO", "SABADO - FESTIVO",];
+    const diasRojos = ["DOMINGO", "LUNES - FESTIVO", "SABADO - FESTIVO", "JUEVES",];
     if (diasRojos.includes(dia)) {
         return `<span style="color: #ff0000; font-weight: bold;">${dia}</span>`;
     }
@@ -149,6 +149,14 @@ function formatearDia(dia) {
 
 
 
+
+{ 
+    day: formatearDia("JUEVES"), 
+    date: "25 De Diciembre 2025", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
 
 
 
