@@ -165,6 +165,60 @@ function formatearDia(dia) {
 
 
 
+
+        
+           { 
+            
+            day: formatearDia("SABADO"),
+            date: "27 De Diciembre 2025", 
+            time: "1PM a 9PM", 
+            completed: true,
+            isJampier: true  // Identificador
+            
+        },
+
+//
+
+
+
+        
+
+        
+        
+
+{ 
+    day: formatearDia("DOMINGO"), 
+    date: "28 De Diciembre 2025", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+        
+
+
+
+
+
+
+
+
+         
+          { 
+            
+            day: formatearDia("MIERCOLES"), 
+            date: "31 De Diciembre 2025",  
+            time: "7AM a 6PM", 
+            completed: true,
+            isJampier: true  // Identificador
+            
+        },
+
+
+
+
+
+
         
 
 
