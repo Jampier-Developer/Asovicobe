@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 function formatearDia(dia) {
-    const diasRojos = ["DOMINGO", "LUNES - FESTIVO", "SABADO - FESTIVO", "JUEVES - FESTIVO",];
+    const diasRojos = ["DOMINGO", "LUNES - FESTIVO", "SABADO - FESTIVO", "JUEVES - FESTIVO", "VIERNES - FESTIVO",];
     if (diasRojos.includes(dia)) {
         return `<span style="color: #ff0000; font-weight: bold;">${dia}</span>`;
     }
@@ -40,119 +40,9 @@ function formatearDia(dia) {
 
 
 
-
-    
-           { 
-            
-            day: formatearDia("SABADO"),
-            date: "6 De Diciembre 2025", 
-            time: "11AM a 9PM", 
-            completed: true,
-            isJampier: true  // Identificador
-            
-        },
-
-//
-
-
-
-        
-
-        
-        
-
-{ 
-    day: formatearDia("DOMINGO"), 
-    date: "7 De Diciembre 2025", 
-    time: "7AM a 9PM", 
-    completed: true,
-    isJampier: true
-},
-
-
-
-        
-
-
-        
-          { 
-            
-            day: formatearDia("LUNES - FESTIVO"), 
-            date: "8 De Diciembre 2025",  
-            time: "7AM a 9PM", 
-            completed: true,
-            isJampier: true  // Identificador
-            
-        },
-
-
-
-    
-         
-          { 
-            
-            day: formatearDia("MIERCOLES"), 
-            date: "10 De Diciembre 2025",  
-            time: "5PM a 12AM", 
-            completed: true,
-            isJampier: true  // Identificador
-            
-        },
-
-        
-  
-
-      
-          { 
-            
-            day: formatearDia("JUEVES"), 
-            date: "11 De Diciembre 2025",  
-            time: "5PM a 9PM", 
-            completed: true,
-            isJampier: true  // Identificador
-            
-        },
-
-
-
-
-
-
-
-
-           { 
-            
-            day: formatearDia("SABADO"),
-            date: "20 De Diciembre 2025", 
-            time: "1PM a 9PM", 
-            completed: true,
-            isJampier: true  // Identificador
-            
-        },
-
-//
-
-
-
-        
-
-        
-        
-
-{ 
-    day: formatearDia("DOMINGO"), 
-    date: "21 De Diciembre 2025", 
-    time: "7AM a 9PM", 
-    completed: true,
-    isJampier: true
-},
-
-
-
-
 { 
     day: formatearDia("JUEVES - FESTIVO"), 
-    date: "25 De Diciembre 2025", 
+    date: "1 De Enero 2026", 
     time: "7AM a 9PM", 
     completed: true,
     isJampier: true
@@ -161,64 +51,42 @@ function formatearDia(dia) {
 
 
 
-
-
-
-
-
-        
-           { 
-            
-            day: formatearDia("SABADO"),
-            date: "27 De Diciembre 2025", 
-            time: "1PM a 9PM", 
-            completed: true,
-            isJampier: true  // Identificador
-            
-        },
-
-//
-
-
-
-        
-
         
         
-
 { 
+    day: formatearDia("VIERNES - FESTIVO"), 
+    date: "2 De Enero 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+        { 
+    day: formatearDia("SABADO - FESTIVO"), 
+    date: "3 De Enero 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+        
+        { 
     day: formatearDia("DOMINGO"), 
-    date: "28 De Diciembre 2025", 
+    date: "4 De Enero 2026", 
     time: "7AM a 9PM", 
     completed: true,
     isJampier: true
 },
 
         
-
-
-
-
-
-
-
-
-         
-          { 
-            
-            day: formatearDia("MIERCOLES"), 
-            date: "31 De Diciembre 2025",  
-            time: "7AM a 6PM", 
-            completed: true,
-            isJampier: true  // Identificador
-            
-        },
-
-
-
-
-
-
         
 
 
