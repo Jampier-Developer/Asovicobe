@@ -41,6 +41,19 @@ function formatearDia(dia) {
 
 
 { 
+    day: formatearDia("MIERCOLES - FESTIVO"), 
+    date: "31 De Diciembre 2025", 
+    time: "7AM a 7PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+        
+
+{ 
     day: formatearDia("JUEVES - FESTIVO"), 
     date: "1 De Enero 2026", 
     time: "7AM a 9PM", 
