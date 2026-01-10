@@ -132,6 +132,17 @@ function formatearDia(dia) {
 
 
 
+              { 
+    day: formatearDia("LUNES - FESTIVO"), 
+    date: "12 De Enero 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
 
         
 
