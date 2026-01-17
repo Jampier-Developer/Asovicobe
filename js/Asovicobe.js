@@ -226,8 +226,8 @@ function formatearDia(dia) {
 
 
 // Crear el elemento con el texto dorado animado
-const textoDorado = document.createElement('x');
-textoDorado.innerHTML = '... ok ...';
+const textoDorado = document.createElement('div');
+textoDorado.innerHTML = '... 1.000.000 ...';
 textoDorado.style.color = '#FFD700';
 textoDorado.style.fontSize = '3.5em';
 textoDorado.style.fontWeight = 'bold';
