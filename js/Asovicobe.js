@@ -147,6 +147,42 @@ function formatearDia(dia) {
         
 
 
+
+
+
+                { 
+    day: formatearDia("SABADO"), 
+    date: "17 De Enero 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+        
+        { 
+    day: formatearDia("DOMINGO"), 
+    date: "18 De Enero 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+
+
+
+
+
+
+        
+
         
   ];
 
