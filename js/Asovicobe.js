@@ -203,6 +203,17 @@ function formatearDia(dia) {
 
 
 
+
+                
+        { 
+    day: formatearDia("SABADO"), 
+    date: "31 De Enero 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
         
 
         
