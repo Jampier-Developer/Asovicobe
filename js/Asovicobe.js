@@ -40,9 +40,11 @@ function formatearDia(dia) {
 
 
 
+        
+
 { 
-    day: formatearDia("DOMINGO"), 
-    date: "1 De Febrero 2026", 
+    day: formatearDia("JUEVES - FESTIVO"), 
+    date: "2 De Abril 2026", 
     time: "7AM a 9PM", 
     completed: true,
     isJampier: true
@@ -51,8 +53,157 @@ function formatearDia(dia) {
 
 
 
- 
+        
 
+
+        { 
+    day: formatearDia("VIERNES - FESTIVO"), 
+    date: "3 De Abril 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+        
+
+        
+
+{ 
+    day: formatearDia("SABADO - FESTIVO"), 
+    date: "4 De Abril 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+        
+
+        { 
+            
+    day: formatearDia("DOMINGO"), 
+    date: "5 De Abril 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+            
+},
+
+
+
+
+
+
+
+{ 
+    day: formatearDia("SABADO"), 
+    date: "11 De Abril 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+
+
+        
+         { 
+            
+    day: formatearDia("DOMINGO"), 
+    date: "12 De Abril 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+            
+},
+
+
+
+
+        
+
+
+        
+
+
+        
+{ 
+    day: formatearDia("SABADO"), 
+    date: "18 De Abril 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+
+        
+
+        
+         { 
+            
+    day: formatearDia("DOMINGO"), 
+    date: "19 De Abril 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+            
+},
+        
+
+
+
+
+
+
+
+        
+
+
+{ 
+    day: formatearDia("SABADO"), 
+    date: "25 De Abril 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+        
+
+
+
+
+
+
+        
+         { 
+            
+    day: formatearDia("DOMINGO"), 
+    date: "26 De Abril 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+            
+},
+
+
+
+
+
+
+        
+
+        
         
   ];
 
