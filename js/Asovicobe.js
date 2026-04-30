@@ -43,8 +43,8 @@ function formatearDia(dia) {
       
         
 { 
-    day: formatearDia("VIERNES - FESTIVO"), 
-    date: "I DON'T NOW", 
+    day: formatearDia("I DON'T NOW"), 
+    date: "1 De Mayo De 2026", 
     time: "1PM a 9PM", 
     completed: true,
     isJampier: true
