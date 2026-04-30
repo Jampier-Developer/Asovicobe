@@ -48,6 +48,7 @@ function formatearDia(dia) {
     time: "1PM a 9PM", 
     completed: true,
     isJampier: true
+    
 },
 
 
