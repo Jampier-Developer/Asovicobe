@@ -40,95 +40,18 @@ function formatearDia(dia) {
 
 
 
+      
         
-
 { 
-    day: formatearDia("JUEVES - FESTIVO"), 
-    date: "2 De Abril 2026", 
-    time: "7AM a 9PM", 
-    completed: true,
-    isJampier: true
-},
-
-
-
-
-        
-
-
-        { 
     day: formatearDia("VIERNES - FESTIVO"), 
-    date: "3 De Abril 2026", 
-    time: "7AM a 9PM", 
-    completed: true,
-    isJampier: true
-},
-
-
-
-
-        
-
-        
-
-{ 
-    day: formatearDia("SABADO - FESTIVO"), 
-    date: "4 De Abril 2026", 
-    time: "7AM a 9PM", 
-    completed: true,
-    isJampier: true
-},
-
-
-
-        
-
-        { 
-            
-    day: formatearDia("DOMINGO"), 
-    date: "5 De Abril 2026", 
-    time: "7AM a 9PM", 
-    completed: true,
-    isJampier: true
-            
-},
-
-
-
-
-
-
-
-{ 
-    day: formatearDia("SABADO"), 
-    date: "11 De Abril 2026", 
+    date: "I DON'T NOW", 
     time: "1PM a 9PM", 
     completed: true,
     isJampier: true
 },
 
 
-
-
-
-
-
         
-         { 
-            
-    day: formatearDia("DOMINGO"), 
-    date: "12 De Abril 2026", 
-    time: "7AM a 9PM", 
-    completed: true,
-    isJampier: true
-            
-},
-
-
-
-
-        
-
 
         
 
@@ -136,7 +59,7 @@ function formatearDia(dia) {
         
 { 
     day: formatearDia("SABADO"), 
-    date: "18 De Abril 2026", 
+    date: "2 De Mayo 2026", 
     time: "1PM a 9PM", 
     completed: true,
     isJampier: true
@@ -153,7 +76,7 @@ function formatearDia(dia) {
          { 
             
     day: formatearDia("DOMINGO"), 
-    date: "19 De Abril 2026", 
+    date: "3 De Mayo 2026", 
     time: "7AM a 9PM", 
     completed: true,
     isJampier: true
@@ -167,33 +90,46 @@ function formatearDia(dia) {
 
 
 
-        
 
-
+       
 { 
     day: formatearDia("SABADO"), 
-    date: "25 De Abril 2026", 
+    date: "9 De Mayo 2026", 
     time: "1PM a 9PM", 
     completed: true,
     isJampier: true
 },
 
+
+
+
+
+
         
-
-
-
-
-
 
         
          { 
             
     day: formatearDia("DOMINGO"), 
-    date: "26 De Abril 2026", 
+    date: "10 De Mayo 2026", 
     time: "7AM a 9PM", 
     completed: true,
     isJampier: true
             
+},
+        
+
+
+
+        
+
+       
+{ 
+    day: formatearDia("SABADO"), 
+    date: "16 De Mayo 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
 },
 
 
@@ -203,6 +139,88 @@ function formatearDia(dia) {
 
         
 
+        
+         { 
+            
+    day: formatearDia("DOMINGO"), 
+    date: "17 De Mayo 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+            
+},
+        
+
+
+
+        
+
+
+               
+{ 
+    day: formatearDia("SABADO"), 
+    date: "23 De Mayo 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+
+        
+
+        
+         { 
+            
+    day: formatearDia("DOMINGO"), 
+    date: "24 De Mayo 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+            
+},
+        
+
+
+
+
+
+       
+{ 
+    day: formatearDia("SABADO"), 
+    date: "30 De Mayo 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+},
+
+
+
+
+
+
+        
+
+        
+         { 
+            
+    day: formatearDia("DOMINGO"), 
+    date: "31 De Mayo 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+             
+            
+},
+        
+
+
+
+
+        
         
         
   ];
