@@ -56,8 +56,20 @@ function formatearDia(dia) {
 
         
 { 
-    day: formatearDia("DOMINGP"), 
+    day: formatearDia("DOMINGO"), 
     date: "7 De Junio De 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+
+
+                
+{ 
+    day: formatearDia("LUNES - FESTIVO"), 
+    date: "8 De Junio De 2026", 
     time: "7AM a 9PM", 
     completed: true,
     isJampier: true
@@ -83,7 +95,7 @@ function formatearDia(dia) {
 
        
 { 
-    day: formatearDia("DOMINGP"), 
+    day: formatearDia("DOMINO"), 
     date: "14 De Junio De 2026", 
     time: "7AM a 9PM", 
     completed: true,
@@ -94,6 +106,16 @@ function formatearDia(dia) {
         
 
 
+
+        
+{ 
+    day: formatearDia("LUNES - FESTIVO"), 
+    date: "15 De Junio De 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
 
 
 
@@ -116,7 +138,7 @@ function formatearDia(dia) {
 
        
 { 
-    day: formatearDia("DOMINGP"), 
+    day: formatearDia("DOMINGO"), 
     date: "21 De Junio De 2026", 
     time: "7AM a 9PM", 
     completed: true,
@@ -142,7 +164,7 @@ function formatearDia(dia) {
 
        
 { 
-    day: formatearDia("DOMINGP"), 
+    day: formatearDia("DOMINGO"), 
     date: "28 De Junio De 2026", 
     time: "7AM a 9PM", 
     completed: true,
@@ -151,7 +173,17 @@ function formatearDia(dia) {
 },
 
         
-        
+                
+{ 
+    day: formatearDia("LUNES - FESTIVO"), 
+    date: "29 De Junio De 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+
 
         
         
