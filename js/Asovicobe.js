@@ -43,8 +43,8 @@ function formatearDia(dia) {
       
         
 { 
-    day: formatearDia("VIERNES - FESTIVO"), 
-    date: "1 De Mayo De 2026", 
+    day: formatearDia("SABADO"), 
+    date: "6 De Junio De 2026", 
     time: "1PM a 9PM", 
     completed: true,
     isJampier: true
@@ -54,6 +54,103 @@ function formatearDia(dia) {
 
         
 
+        
+{ 
+    day: formatearDia("DOMINGP"), 
+    date: "7 De Junio De 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+
+        
+
+        
+{ 
+    day: formatearDia("SABADO"), 
+    date: "13 De Junio De 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+
+        
+
+
+       
+{ 
+    day: formatearDia("DOMINGP"), 
+    date: "14 De Junio De 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+        
+
+
+
+
+
+
+
+        
+        
+{ 
+    day: formatearDia("SABADO"), 
+    date: "20 De Junio De 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+
+        
+
+
+       
+{ 
+    day: formatearDia("DOMINGP"), 
+    date: "21 De Junio De 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+
+
+
+        { 
+    day: formatearDia("SABADO"), 
+    date: "27 De Junio De 2026", 
+    time: "1PM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+
+        
+
+
+       
+{ 
+    day: formatearDia("DOMINGP"), 
+    date: "28 De Junio De 2026", 
+    time: "7AM a 9PM", 
+    completed: true,
+    isJampier: true
+    
+},
+
+        
         
 
         
