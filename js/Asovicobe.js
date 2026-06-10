@@ -81,7 +81,7 @@ function formatearDia(dia) {
         
 
 { 
-    day: formatearDia("LUNES - FESTIVO"), 
+    day: formatearDia("MIERCOLES"), 
     date: "10 De Junio De 2026", 
     time: "5PM a 9PM", 
     completed: true,
