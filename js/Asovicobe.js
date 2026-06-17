@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'SABADO',          date: '27 De Junio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '28 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '29 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'LUNES - FESTIVO', date: '105 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+     
     ];
 
     // ── DOM ───────────────────────────────────────────────────────────────────
