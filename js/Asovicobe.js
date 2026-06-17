@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function calcularPago(dia) {
         if (isDiaRojo(dia))   return 100000;
         if (isDiaSabado(dia)) return 35000;
-        return 15000;
+        return 20000;
     }
 
     function badgeClass(pago) {
@@ -37,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function normTime(t) {
         return t.replace(/\s+a\s+/gi, ' - ');
+    }
+
+    function esc(str) {
+        const d = document.createElement('div');
+        d.textContent = String(str);
+        return d.innerHTML;
     }
 
     // ── Base de datos Jampier (NO editable) ──────────────────────────────────
@@ -154,8 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
         allData.forEach((item, index) => {
             const pago     = calcularPago(item.day);
             const dayClass = getDayClass(item.day);
-            if (item.completed) completados++;
-            totalGanado += pago;
+            if (item.completed) {
+                completados++;
+                totalGanado += pago;
+            }
 
             const li = document.createElement('li');
             li.classList.add(`is-${dayClass}`);
@@ -163,10 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             li.innerHTML = `
                 <div class="shift-info">
-                    <div class="shift-day ${dayClass}">${item.day}</div>
+                    <div class="shift-day ${dayClass}">${esc(item.day)}</div>
                     <div class="shift-meta">
-                        <span><i class="far fa-calendar"></i> ${item.date}</span>
-                        <span><i class="far fa-clock"></i> ${normTime(item.time)}</span>
+                        <span><i class="far fa-calendar"></i> ${esc(item.date)}</span>
+                        <span><i class="far fa-clock"></i> ${esc(normTime(item.time))}</span>
                     </div>
                 </div>
                 <div class="shift-right">
