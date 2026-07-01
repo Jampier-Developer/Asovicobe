@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pago fijo por tipo de día — el horario no afecta el monto
     function calcularPago(dia) {
         if (isDiaRojo(dia))   return 100000;
-        if (isDiaSabado(dia)) return 35000;
+        if (isDiaSabado(dia)) return 40000;
         return 20000;
     }
 
