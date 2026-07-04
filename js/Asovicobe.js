@@ -67,11 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Base de datos Jampier (NO editable) ──────────────────────────────────
 
     const jampierDatabase = [
-        { day: 'LUNES',           date: '1 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'MARTES',          date: '2 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'MIERCOLES',       date: '3 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'JUEVES',          date: '4 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'VIERNES',         date: '5 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '6 De Junio De 2026',  time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '7 De Junio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '8 De Junio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
@@ -80,8 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'DOMINGO',         date: '14 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '15 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'MARTES',          date: '16 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'JUEVES',          date: '18 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'VIERNES',         date: '19 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '20 De Junio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '21 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'LUNES',           date: '22 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'MARTES',          date: '23 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'MIERCOLES',       date: '24 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'JUEVES',          date: '25 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'VIERNES',         date: '26 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '27 De Junio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '28 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
