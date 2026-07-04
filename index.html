@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <title>Asovicobe - Control de Turnos</title>
     <link rel="shortcut icon" href="img/Logo-Asovicobe.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -103,17 +104,31 @@
             </button>
         </section>
 
-        <section class="list-section">
-            <div class="list-header">
-                <h2><i class="fas fa-list-ul"></i> Mis Turnos</h2>
-                <span class="badge-count" id="turnosCount">0 turnos</span>
-            </div>
-            <ul id="dataList"></ul>
-            <div class="empty-state" id="emptyState" style="display:none">
-                <i class="fas fa-calendar-plus"></i>
-                <p>No hay turnos registrados aún.<br>Agrega tu primer turno.</p>
-            </div>
-        </section>
+        <div class="turnos-column">
+            <section class="list-section">
+                <div class="list-header">
+                    <h2><i class="fas fa-list-ul"></i> Mis Turnos <span class="mes-actual" id="mesActual"></span></h2>
+                    <span class="badge-count" id="turnosCount">0 turnos</span>
+                </div>
+                <ul id="dataList" class="shift-list"></ul>
+                <div class="empty-state" id="emptyState" style="display:none">
+                    <i class="fas fa-calendar-plus"></i>
+                    <p>No hay turnos registrados este mes aún.<br>Agrega tu primer turno.</p>
+                </div>
+            </section>
+
+            <section class="list-section historial-section">
+                <div class="list-header">
+                    <h2><i class="fas fa-clock-rotate-left"></i> Historial</h2>
+                    <span class="badge-count" id="historialCount">0 turnos</span>
+                </div>
+                <div id="historialContainer"></div>
+                <div class="empty-state" id="historialEmptyState" style="display:none">
+                    <i class="fas fa-box-archive"></i>
+                    <p>Aún no hay meses en el historial.<br>Cuando cambie el mes, lo anterior aparecerá aquí.</p>
+                </div>
+            </section>
+        </div>
 
     </main>
 
@@ -126,7 +141,7 @@
 
     <footer class="footer">
         <p>&copy; 2026 Asovicobe Vigilancia. Todos los derechos reservados.</p>
-        <p>Desarrollado por <a href="" target="_blank">Jampier Estrada</a></p>
+        <p>Desarrollado por <span class="footer-author">Jampier Estrada</span></p>
     </footer>
 
     <script src="js/Asovicobe.js"></script>

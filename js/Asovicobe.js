@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pago fijo por tipo de día — el horario no afecta el monto
     function calcularPago(dia) {
         if (isDiaRojo(dia))   return 100000;
-        if (isDiaSabado(dia)) return 35000;
-        return 20000;
+        if (isDiaSabado(dia)) return 40000;
+        return 15000;
     }
 
     function badgeClass(pago) {
         if (pago === 100000) return 'festivo'; // rojo
-        if (pago === 35000)  return 'sabado';  // verde
+        if (pago === 40000)   return 'sabado';  // verde
         return 'low';                           // amarillo
     }
 
@@ -45,9 +45,33 @@ document.addEventListener('DOMContentLoaded', () => {
         return d.innerHTML;
     }
 
+    // ── Fechas / meses (para el historial) ────────────────────────────────────
+
+    const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
+                   'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+    // Acepta "14 De Junio De 2026" y "14 De Junio 2026"
+    function parseFecha(str) {
+        const m = String(str).toLowerCase().match(/(\d{1,2})\s*de\s*([a-záéíóúñ]+)\s*(?:de\s*)?(\d{4})/i);
+        if (!m) return null;
+        const month = MESES.findIndex(mes => mes === m[2] || mes.startsWith(m[2]) || m[2].startsWith(mes));
+        if (month === -1) return null;
+        return { day: parseInt(m[1], 10), month, year: parseInt(m[3], 10) };
+    }
+
+    function mesLabel(year, month) {
+        const nombre = MESES[month];
+        return nombre.charAt(0).toUpperCase() + nombre.slice(1) + ' ' + year;
+    }
+
     // ── Base de datos Jampier (NO editable) ──────────────────────────────────
 
     const jampierDatabase = [
+        { day: 'LUNES',           date: '1 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'MARTES',          date: '2 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'MIERCOLES',       date: '3 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'JUEVES',          date: '4 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'VIERNES',         date: '5 De Junio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '6 De Junio De 2026',  time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '7 De Junio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '8 De Junio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
@@ -64,6 +88,25 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'LUNES - FESTIVO', date: '29 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
     ];
 
+    // ── Agenda Jampier (NO editable desde la UI) ─────────────────────────────
+    // Turnos PROGRAMADOS del mes (sábados, domingos y festivos conocidos).
+    // Se marcan completed:true de una vez, apenas se agenda el turno (así lo
+    // maneja Jampier siempre, no espera a que pase el día). Separado de
+    // jampierDatabase a propósito: esto es agenda del mes actual, no historial
+    // (el Historial agrupa por mes sin importar el estado de completed).
+    const jampierAgenda = [
+        // Julio 2026 — sábado 4 excluido a propósito (no laborado)
+        { day: 'DOMINGO',         date: '5 De Julio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '11 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '12 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'LUNES - FESTIVO', date: '13 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '18 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '19 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'LUNES - FESTIVO', date: '20 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '25 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '26 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+    ];
+
     // ── DOM ───────────────────────────────────────────────────────────────────
 
     const daySelect    = document.getElementById('day');
@@ -72,6 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveBtn      = document.getElementById('saveBtn');
     const dataList     = document.getElementById('dataList');
     const emptyState   = document.getElementById('emptyState');
+    const mesActualLabel      = document.getElementById('mesActual');
+    const historialContainer  = document.getElementById('historialContainer');
+    const historialEmptyState = document.getElementById('historialEmptyState');
     const modal        = document.getElementById('modal');
     const modalText    = document.getElementById('modalText');
     const closeModal   = document.querySelector('.close-modal');
@@ -148,57 +194,124 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Render ────────────────────────────────────────────────────────────────
 
+    function buildShiftLi(item, index, pago) {
+        const dayClass = getDayClass(item.day);
+        const li = document.createElement('li');
+        li.classList.add(`is-${dayClass}`);
+        if (item.completed) li.classList.add('is-done');
+
+        li.innerHTML = `
+            <div class="shift-info">
+                <div class="shift-day ${dayClass}">${esc(item.day)}</div>
+                <div class="shift-meta">
+                    <span><i class="far fa-calendar"></i> ${esc(item.date)}</span>
+                    <span><i class="far fa-clock"></i> ${esc(normTime(item.time))}</span>
+                </div>
+            </div>
+            <div class="shift-right">
+                <span class="pago-badge ${badgeClass(pago)}">${formatPeso(pago)}</span>
+                <div class="actions">
+                    <button class="complete" onclick="toggleComplete(${index}, ${item.isJampier})" title="${item.completed ? 'Marcar pendiente' : 'Marcar completado'}">
+                        <i class="fas fa-${item.completed ? 'check-circle' : 'circle'}"></i>
+                    </button>
+                    ${item.isJampier ? '' : `<button class="delete" onclick="deleteData(${index})" title="Eliminar turno">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>`}
+                </div>
+            </div>`;
+
+        return li;
+    }
+
+    // Turnos del mes calendario actual → arriba, editables.
+    // Meses anteriores → Historial, agrupados, nunca se borran.
     function renderData() {
+        // Recordar qué meses del historial estaban abiertos antes de reconstruir todo.
+        const mesesAbiertos = new Set(
+            [...historialContainer.querySelectorAll('.historial-month[open]')].map(d => d.dataset.key)
+        );
+
         dataList.innerHTML = '';
+        historialContainer.innerHTML = '';
 
         const userData = JSON.parse(localStorage.getItem('asovicobe_data')) || [];
-        const allData  = [...jampierDatabase, ...userData];
+        const allData  = [...jampierDatabase, ...jampierAgenda, ...userData];
 
+        const now  = new Date();
+        const curY = now.getFullYear();
+        const curM = now.getMonth();
+
+        const actuales  = [];
+        const historial = new Map(); // "YYYY-MM" -> { year, month, items: [] }
+
+        allData.forEach((item, index) => {
+            const fecha = parseFecha(item.date);
+            // Si no se puede interpretar la fecha, se muestra en el mes actual (mejor visible que perdida).
+            if (!fecha || (fecha.year === curY && fecha.month === curM)) {
+                actuales.push({ item, index });
+                return;
+            }
+            const key = `${fecha.year}-${String(fecha.month).padStart(2, '0')}`;
+            if (!historial.has(key)) historial.set(key, { year: fecha.year, month: fecha.month, items: [] });
+            historial.get(key).items.push({ item, index });
+        });
+
+        mesActualLabel.textContent = `— ${mesLabel(curY, curM)}`;
+
+        // ── Mes actual ──
         let totalGanado = 0;
         let completados = 0;
 
-        allData.forEach((item, index) => {
-            const pago     = calcularPago(item.day);
-            const dayClass = getDayClass(item.day);
+        actuales.forEach(({ item, index }) => {
+            const pago = calcularPago(item.day);
             if (item.completed) {
                 completados++;
                 totalGanado += pago;
             }
-
-            const li = document.createElement('li');
-            li.classList.add(`is-${dayClass}`);
-            if (item.completed) li.classList.add('is-done');
-
-            li.innerHTML = `
-                <div class="shift-info">
-                    <div class="shift-day ${dayClass}">${esc(item.day)}</div>
-                    <div class="shift-meta">
-                        <span><i class="far fa-calendar"></i> ${esc(item.date)}</span>
-                        <span><i class="far fa-clock"></i> ${esc(normTime(item.time))}</span>
-                    </div>
-                </div>
-                <div class="shift-right">
-                    <span class="pago-badge ${badgeClass(pago)}">${formatPeso(pago)}</span>
-                    <div class="actions">
-                        <button class="complete" onclick="toggleComplete(${index}, ${item.isJampier})" title="${item.completed ? 'Marcar pendiente' : 'Marcar completado'}">
-                            <i class="fas fa-${item.completed ? 'check-circle' : 'circle'}"></i>
-                        </button>
-                        ${item.isJampier ? '' : `<button class="delete" onclick="deleteData(${index})" title="Eliminar turno">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>`}
-                    </div>
-                </div>`;
-
-            dataList.appendChild(li);
+            dataList.appendChild(buildShiftLi(item, index, pago));
         });
 
-        document.getElementById('totalTurnos').textContent       = allData.length;
+        document.getElementById('totalTurnos').textContent       = actuales.length;
         document.getElementById('totalGanado').textContent       = formatPeso(totalGanado);
         document.getElementById('turnosCompletados').textContent = completados;
-        document.getElementById('turnosPendientes').textContent  = allData.length - completados;
-        document.getElementById('turnosCount').textContent       = `${allData.length} turno${allData.length !== 1 ? 's' : ''}`;
+        document.getElementById('turnosPendientes').textContent  = actuales.length - completados;
+        document.getElementById('turnosCount').textContent       = `${actuales.length} turno${actuales.length !== 1 ? 's' : ''}`;
 
-        emptyState.style.display = allData.length === 0 ? 'block' : 'none';
+        emptyState.style.display = actuales.length === 0 ? 'block' : 'none';
+
+        // ── Historial (meses anteriores, más reciente primero) ──
+        const meses = [...historial.values()].sort((a, b) => (b.year - a.year) || (b.month - a.month));
+        let historialTotal = 0;
+
+        meses.forEach(mes => {
+            const key = `${mes.year}-${String(mes.month).padStart(2, '0')}`;
+            let subtotal = 0;
+            const ul = document.createElement('ul');
+            ul.className = 'shift-list';
+
+            mes.items.forEach(({ item, index }) => {
+                const pago = calcularPago(item.day);
+                if (item.completed) subtotal += pago;
+                ul.appendChild(buildShiftLi(item, index, pago));
+            });
+
+            const details = document.createElement('details');
+            details.className = 'historial-month';
+            details.dataset.key = key;
+            if (mesesAbiertos.has(key)) details.open = true;
+            details.innerHTML = `
+                <summary>
+                    <span class="historial-name">${esc(mesLabel(mes.year, mes.month))}</span>
+                    <span class="historial-sub">${mes.items.length} turno${mes.items.length !== 1 ? 's' : ''} · ${formatPeso(subtotal)}</span>
+                </summary>`;
+            details.appendChild(ul);
+            historialContainer.appendChild(details);
+
+            historialTotal += mes.items.length;
+        });
+
+        document.getElementById('historialCount').textContent = `${historialTotal} turno${historialTotal !== 1 ? 's' : ''}`;
+        historialEmptyState.style.display = meses.length === 0 ? 'block' : 'none';
     }
 
     // ── LocalStorage ──────────────────────────────────────────────────────────
@@ -217,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         const userData = JSON.parse(localStorage.getItem('asovicobe_data')) || [];
-        const i = index - jampierDatabase.length;
+        const i = index - jampierDatabase.length - jampierAgenda.length;
         userData[i].completed = !userData[i].completed;
         localStorage.setItem('asovicobe_data', JSON.stringify(userData));
         renderData();
@@ -225,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.deleteData = (index) => {
         const userData = JSON.parse(localStorage.getItem('asovicobe_data')) || [];
-        userData.splice(index - jampierDatabase.length, 1);
+        userData.splice(index - jampierDatabase.length - jampierAgenda.length, 1);
         localStorage.setItem('asovicobe_data', JSON.stringify(userData));
         renderData();
         showModal('🗑️ Turno eliminado.');

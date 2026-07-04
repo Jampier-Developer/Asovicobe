@@ -161,6 +161,13 @@ body::before {
     gap: 1.5rem;
 }
 
+.turnos-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+}
+
 /* ===== GLASS CARDS ===== */
 .form-section,
 .list-section {
@@ -345,6 +352,14 @@ body::before {
     color: var(--red);
 }
 
+.mes-actual {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--gray);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
 .badge-count {
     background: var(--red);
     color: var(--white);
@@ -356,14 +371,14 @@ body::before {
 }
 
 /* ===== SHIFT CARDS ===== */
-#dataList {
+.shift-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
 }
 
-#dataList li {
+.shift-list li {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
@@ -377,7 +392,7 @@ body::before {
     overflow: hidden;
 }
 
-#dataList li::before {
+.shift-list li::before {
     content: '';
     position: absolute;
     left: 0;
@@ -389,16 +404,16 @@ body::before {
     transition: background 0.25s;
 }
 
-#dataList li.is-red::before    { background: var(--red); }
-#dataList li.is-sabado::before { background: var(--green); }
-#dataList li.is-normal::before { background: #ffaa00; }
+.shift-list li.is-red::before    { background: var(--red); }
+.shift-list li.is-sabado::before { background: var(--green); }
+.shift-list li.is-normal::before { background: #ffaa00; }
 
-#dataList li:hover {
+.shift-list li:hover {
     background: rgba(255, 255, 255, 0.09);
     border-color: rgba(255, 255, 255, 0.15);
 }
 
-#dataList li.is-done {
+.shift-list li.is-done {
     opacity: 0.5;
 }
 
@@ -509,6 +524,70 @@ body::before {
     border-color: var(--red);
 }
 
+/* ===== HISTORIAL (por mes) ===== */
+#historialContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.historial-month {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+}
+
+.historial-month summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    list-style: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.historial-month summary::-webkit-details-marker { display: none; }
+.historial-month summary::marker { content: ''; }
+
+.historial-name {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.historial-name::before {
+    content: '\f105';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--red);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.historial-month[open] .historial-name::before {
+    transform: rotate(90deg);
+}
+
+.historial-sub {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--gray);
+    text-transform: none;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.historial-month .shift-list {
+    padding: 0 1rem 1rem;
+}
+
 /* ===== EMPTY STATE ===== */
 .empty-state {
     text-align: center;
@@ -598,14 +677,10 @@ body::before {
     font-size: 0.82rem;
 }
 
-.footer a {
+.footer-author {
     color: var(--red-light);
-    text-decoration: none;
     font-weight: 600;
-    transition: color 0.2s;
 }
-
-.footer a:hover { color: var(--white); }
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 5px; }
@@ -655,7 +730,7 @@ body::before {
         border-radius: 14px;
     }
 
-    #dataList li {
+    .shift-list li {
         padding: 0.8rem 0.85rem;
         flex-wrap: wrap;
         gap: 0.5rem;
