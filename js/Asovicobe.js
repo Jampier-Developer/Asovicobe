@@ -28,9 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return 20000;
     }
 
-    function badgeClass(pago) {
-        if (pago === 100000) return 'festivo'; // rojo
-        if (pago === 40000)   return 'sabado';  // verde
+    // El color del badge sigue el TIPO de día, no el monto — así "verde" queda
+    // exclusivo de sábados de verdad, y un día normal con monto manual alto
+    // (ej. horario de sábado en un martes) sigue viéndose amarillo, sin confundir.
+    function badgeClass(dia) {
+        if (isDiaRojo(dia))   return 'festivo'; // rojo
+        if (isDiaSabado(dia)) return 'sabado';  // verde
         return 'low';                           // amarillo
     }
 
@@ -215,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
             <div class="shift-right">
-                <span class="pago-badge ${badgeClass(pago)}">${formatPeso(pago)}</span>
+                <span class="pago-badge ${badgeClass(item.day)}">${formatPeso(pago)}</span>
                 <div class="actions">
                     <button class="complete" onclick="toggleComplete(${index}, ${item.isJampier})" title="${item.completed ? 'Marcar pendiente' : 'Marcar completado'}">
                         <i class="fas fa-${item.completed ? 'check-circle' : 'circle'}"></i>
