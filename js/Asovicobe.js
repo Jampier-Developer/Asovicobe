@@ -18,11 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'normal';
     }
 
-    // Pago fijo por tipo de día — el horario no afecta el monto
-    function calcularPago(dia) {
+    // Pago fijo por tipo de día — el horario no afecta el monto.
+    // `montoManual`, si viene (número), pisa el cálculo automático — se usa
+    // en días normales impredecibles (ver jampierDatabase/jampierAgenda).
+    function calcularPago(dia, montoManual) {
+        if (typeof montoManual === 'number') return montoManual;
         if (isDiaRojo(dia))   return 100000;
         if (isDiaSabado(dia)) return 40000;
-        return 15000;
+        return 20000;
     }
 
     function badgeClass(pago) {
@@ -74,16 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'SABADO',          date: '13 De Junio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '14 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '15 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'MARTES',          date: '16 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'JUEVES',          date: '18 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'VIERNES',         date: '19 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'MARTES',          date: '16 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
+        { day: 'JUEVES',          date: '18 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
+        { day: 'VIERNES',         date: '19 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
         { day: 'SABADO',          date: '20 De Junio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '21 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'LUNES',           date: '22 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'MARTES',          date: '23 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'MIERCOLES',       date: '24 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'JUEVES',          date: '25 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
-        { day: 'VIERNES',         date: '26 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true },
+        { day: 'LUNES',           date: '22 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
+        { day: 'MARTES',          date: '23 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
+        { day: 'MIERCOLES',       date: '24 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
+        { day: 'JUEVES',          date: '25 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
+        { day: 'VIERNES',         date: '26 De Junio De 2026', time: '5PM a 9PM', completed: true, isJampier: true, pago: 15000 },
         { day: 'SABADO',          date: '27 De Junio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '28 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '29 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
@@ -98,7 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const jampierAgenda = [
         // Julio 2026 — sábado 4 excluido a propósito (no laborado)
         { day: 'DOMINGO',         date: '5 De Julio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'MARTES',          date: '7 De Julio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
+        // Martes trabajado con horario de sábado (1pm-9pm) -> monto manual $40.000
+        { day: 'MARTES',          date: '7 De Julio De 2026',  time: '1PM a 9PM', completed: true, isJampier: true, pago: 40000 },
         { day: 'SABADO',          date: '11 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '12 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '13 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
@@ -265,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let completados = 0;
 
         actuales.forEach(({ item, index }) => {
-            const pago = calcularPago(item.day);
+            const pago = calcularPago(item.day, item.pago);
             if (item.completed) {
                 completados++;
                 totalGanado += pago;
@@ -292,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ul.className = 'shift-list';
 
             mes.items.forEach(({ item, index }) => {
-                const pago = calcularPago(item.day);
+                const pago = calcularPago(item.day, item.pago);
                 if (item.completed) subtotal += pago;
                 ul.appendChild(buildShiftLi(item, index, pago));
             });

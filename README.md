@@ -17,13 +17,13 @@ App web para registrar turnos de vigilancia, calcular el pago automáticamente s
 
 ## Reglas de pago
 
-El pago es fijo según el tipo de día (el horario no cambia el monto):
-
 | Tipo de día                        | Pago     |
 |-------------------------------------|----------|
 | Domingo o festivo                   | $100.000 |
 | Sábado                              | $40.000  |
-| Lunes a viernes (día normal)        | $15.000  |
+| Lunes a viernes (día normal)        | $20.000  |
+
+Domingo, festivo y sábado son automáticos. Los días normales (lunes a viernes) pueden variar según cuántos se trabajen en la misma semana, así que ese caso admite un monto manual por turno en vez de un cálculo fijo.
 
 ## Stack
 
