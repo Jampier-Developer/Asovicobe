@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'DOMINGO',         date: '5 De Julio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
         // Martes trabajado con horario de sábado (1pm-9pm) -> monto manual $40.000
         { day: 'MARTES',          date: '7 De Julio De 2026',  time: '1PM a 9PM', completed: true, isJampier: true, pago: 40000 },
+        { day: 'MIERCOLES',       date: '8 De Julio De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '11 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '12 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '13 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
