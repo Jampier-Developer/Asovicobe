@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'SABADO',          date: '11 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '12 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '13 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'SABADO',          date: '18 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '18 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '19 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '20 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '25 De Julio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
