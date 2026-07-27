@@ -56,6 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
                    'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
+    // Adelanto manual del "mes actual": normalmente el mes actual se calcula
+    // solo (con la fecha real del dispositivo). Si Jampier quiere ver el mes
+    // siguiente como actual ANTES de que llegue de verdad (ej. cerrar julio y
+    // pasar a agosto unos días antes de que termine julio real), se pone aquí
+    // el año/mes deseado (month es 0-indexado: enero=0 ... agosto=7). En
+    // cuanto la fecha real alcance o pase este valor, deja de tener efecto y
+    // todo vuelve a ser 100% automático solo — no hay que quitarlo a mano.
+    const MES_ADELANTADO = { year: 2026, month: 7 }; // agosto 2026
+
     // Acepta "14 De Junio De 2026" y "14 De Junio 2026"
     function parseFecha(str) {
         const m = String(str).toLowerCase().match(/(\d{1,2})\s*de\s*([a-záéíóúñ]+)\s*(?:de\s*)?(\d{4})/i);
@@ -262,9 +271,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const userData = JSON.parse(localStorage.getItem('asovicobe_data')) || [];
         const allData  = [...jampierDatabase, ...jampierAgenda, ...userData];
 
-        const now  = new Date();
-        const curY = now.getFullYear();
-        const curM = now.getMonth();
+        const now = new Date();
+        let curY  = now.getFullYear();
+        let curM  = now.getMonth();
+        // Si el adelanto manual es más "futuro" que la fecha real, manda él;
+        // apenas la fecha real lo alcance o pase, deja de aplicar solo.
+        if (MES_ADELANTADO.year > curY || (MES_ADELANTADO.year === curY && MES_ADELANTADO.month > curM)) {
+            curY = MES_ADELANTADO.year;
+            curM = MES_ADELANTADO.month;
+        }
 
         const actuales  = [];
         const historial = new Map(); // "YYYY-MM" -> { year, month, items: [] }
