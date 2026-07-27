@@ -93,15 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'SABADO',          date: '27 De Junio De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '28 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '29 De Junio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-    ];
 
-    // ── Agenda Jampier (NO editable desde la UI) ─────────────────────────────
-    // Turnos PROGRAMADOS del mes (sábados, domingos y festivos conocidos).
-    // Se marcan completed:true de una vez, apenas se agenda el turno (así lo
-    // maneja Jampier siempre, no espera a que pase el día). Separado de
-    // jampierDatabase a propósito: esto es agenda del mes actual, no historial
-    // (el Historial agrupa por mes sin importar el estado de completed).
-    const jampierAgenda = [
         // Julio 2026 — sábado 4 excluido a propósito (no laborado)
         { day: 'DOMINGO',         date: '5 De Julio De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
         // Martes trabajado con horario de sábado (1pm-9pm) -> monto manual $40.000
@@ -115,6 +107,29 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'LUNES - FESTIVO', date: '20 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '25 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '26 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+    ];
+
+    // ── Agenda Jampier (NO editable desde la UI) ─────────────────────────────
+    // Turnos PROGRAMADOS del mes (sábados, domingos y festivos conocidos).
+    // Se marcan completed:true de una vez, apenas se agenda el turno (así lo
+    // maneja Jampier siempre, no espera a que pase el día). Separado de
+    // jampierDatabase a propósito: esto es agenda del mes actual, no historial
+    // (el Historial agrupa por mes sin importar el estado de completed).
+    const jampierAgenda = [
+        // Agosto 2026 — festivos: viernes 7 (Batalla de Boyacá, fecha fija) y
+        // lunes 17 (Asunción de la Virgen, trasladada por Ley Emiliani)
+        { day: 'SABADO',          date: '1 De Agosto De 2026',  time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '2 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'VIERNES - FESTIVO', date: '7 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '8 De Agosto De 2026',  time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '9 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '15 De Agosto De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '16 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'LUNES - FESTIVO', date: '17 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '22 De Agosto De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '23 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '29 De Agosto De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '30 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
     ];
 
     // ── DOM ───────────────────────────────────────────────────────────────────
@@ -257,7 +272,10 @@ document.addEventListener('DOMContentLoaded', () => {
         allData.forEach((item, index) => {
             const fecha = parseFecha(item.date);
             // Si no se puede interpretar la fecha, se muestra en el mes actual (mejor visible que perdida).
-            if (!fecha || (fecha.year === curY && fecha.month === curM)) {
+            // Un mes futuro (ej. agosto agregado con antelación mientras aún es julio) también
+            // se queda en "Mis Turnos" — el Historial es solo para meses que YA pasaron.
+            const esPasado = fecha && (fecha.year < curY || (fecha.year === curY && fecha.month < curM));
+            if (!esPasado) {
                 actuales.push({ item, index });
                 return;
             }
