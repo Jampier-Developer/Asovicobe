@@ -127,10 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const jampierAgenda = [
         // Agosto 2026 — festivos: viernes 7 (Batalla de Boyacá, fecha fija) y
         // lunes 17 (Asunción de la Virgen, trasladada por Ley Emiliani)
-        { day: 'SABADO',          date: '1 De Agosto De 2026',  time: '1PM a 9PM', completed: true, isJampier: true, pago: 100000 },
+      
         { day: 'DOMINGO',         date: '2 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'VIERNES - FESTIVO', date: '7 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'SABADO',          date: '8 De Agosto De 2026',  time: '1PM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '9 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '15 De Agosto De 2026', time: '1PM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '16 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
