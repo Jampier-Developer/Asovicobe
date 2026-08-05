@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'DOMINGO',         date: '26 De Julio De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
     ];
 
-    // ── Agenda Jampier (NO editable desde la UI) ─────────────────────────────
+    // ── Agenda Jampier (NO editable desde la UI) ─────────────────────────────  , pago: 100000
     // Turnos PROGRAMADOS del mes (sábados, domingos y festivos conocidos).
     // Se marcan completed:true de una vez, apenas se agenda el turno (así lo
     // maneja Jampier siempre, no espera a que pase el día). Separado de
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const jampierAgenda = [
         // Agosto 2026 — festivos: viernes 7 (Batalla de Boyacá, fecha fija) y
         // lunes 17 (Asunción de la Virgen, trasladada por Ley Emiliani)
-        { day: 'SABADO',          date: '1 De Agosto De 2026',  time: '1PM a 9PM', completed: true, isJampier: true },
+    
         { day: 'DOMINGO',         date: '2 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'VIERNES - FESTIVO', date: '7 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '8 De Agosto De 2026',  time: '1PM a 9PM', completed: true, isJampier: true },
