@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // lunes 17 (Asunción de la Virgen, trasladada por Ley Emiliani)
         { day: 'SABADO',          date: '1 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '2 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'MIERCOLES',       date: '5 De Agosto De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'VIERNES - FESTIVO', date: '7 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '8 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '9 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
