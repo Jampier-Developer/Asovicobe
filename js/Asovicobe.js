@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'VIERNES - FESTIVO', date: '7 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '8 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '9 De Agosto De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'MIERCOLES',       date: '13 De Agosto De 2026',  time: '5PM a 9PM', completed: true, isJampier: true },
         { day: 'SABADO',          date: '15 De Agosto De 2026', time: '1PM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '16 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'LUNES - FESTIVO', date: '17 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
