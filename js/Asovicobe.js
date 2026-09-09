@@ -141,6 +141,15 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 'SABADO',          date: '22 De Agosto De 2026', time: '1PM a 9PM', completed: true, isJampier: true, pago: 100000 },
         { day: 'DOMINGO',         date: '23 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '30 De Agosto De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+
+        // Septiembre 2026 — SIN festivos: Colombia no tiene ningún festivo
+        // nacional en septiembre (el anterior es el lunes 17 de agosto y el
+        // siguiente es el lunes 12 de octubre). Y este mes Jampier NO trabaja
+        // sábados (decisión suya), así que el mes es solo los 4 domingos.
+        { day: 'DOMINGO',         date: '6 De Septiembre De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '13 De Septiembre De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '20 De Septiembre De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'DOMINGO',         date: '27 De Septiembre De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
     ];
 
     // ── DOM ───────────────────────────────────────────────────────────────────
