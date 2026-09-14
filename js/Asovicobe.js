@@ -147,9 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // siguiente es el lunes 12 de octubre). Y este mes Jampier NO trabaja
         // sábados (decisión suya), así que el mes es solo los 4 domingos.
         { day: 'DOMINGO',         date: '6 De Septiembre De 2026',  time: '7AM a 9PM', completed: true, isJampier: true },
+        { day: 'SABADO',          date: '12 De Septiembre De 2026',  time: '7AM a 9PM', completed: true, isJampier: true, pago: 100000 },        { day: 'DOMINGO',         date: '13 De Septiembre De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
         { day: 'DOMINGO',         date: '13 De Septiembre De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'DOMINGO',         date: '20 De Septiembre De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
-        { day: 'DOMINGO',         date: '27 De Septiembre De 2026', time: '7AM a 9PM', completed: true, isJampier: true },
     ];
 
     // ── DOM ───────────────────────────────────────────────────────────────────
